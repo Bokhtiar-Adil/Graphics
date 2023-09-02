@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\Graphics\glfw-3.3.8\build\CMakeFiles\cdf41be0ff13eb8d6bb65429a05e1861\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D:\Graphics\glfw-3.3.8\cmake_uninstall.cmake.in">
+      <Filter>Buildsystem Input Files</Filter>
+    </None>
+    <None Include="D:\Graphics\glfw-3.3.8\examples\CMakeLists.txt">
+      <Filter>Buildsystem Input Files\examples</Filter>
+    </None>
+    <None Include="D:\Graphics\glfw-3.3.8\src\CMakeLists.txt">
+      <Filter>Buildsystem Input Files\src</Filter>
+    </None>
+    <None Include="D:\Graphics\glfw-3.3.8\src\glfw3.pc.in">
+      <Filter>Buildsystem Input Files\src</Filter>
+    </None>
+    <None Include="D:\Graphics\glfw-3.3.8\src\glfw3Config.cmake.in">
+      <Filter>Buildsystem Input Files\src</Filter>
+    </None>
+    <None Include="D:\Graphics\glfw-3.3.8\src\glfw_config.h.in">
+      <Filter>Buildsystem Input Files\src</Filter>
+    </None>
+    <None Include="D:\Graphics\glfw-3.3.8\tests\CMakeLists.txt">
+      <Filter>Buildsystem Input Files\tests</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{777F52B9-2D65-3D5B-B28B-69206891E051}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{1C8691E2-CFBD-325F-B609-D210CCAD7A2A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buildsystem Input Files">
+      <UniqueIdentifier>{162DAC1B-B010-3A2B-B2F5-6E80A7EAC0CA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buildsystem Input Files\examples">
+      <UniqueIdentifier>{B92695E1-B1EB-3492-8F90-15C0E926B287}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buildsystem Input Files\src">
+      <UniqueIdentifier>{24870B75-3494-3DC2-8505-BD17D6B81980}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buildsystem Input Files\tests">
+      <UniqueIdentifier>{4408C07E-8F41-3BE1-886C-47DD682EA977}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,4 @@
+﻿  Main.cpp
+D:\Graphics\Projects\Book\exercises_page_53\Main.cpp(47): warning C4715: 'exercise_1': not all control paths return a value
+D:\Graphics\Projects\Book\exercises_page_53\Main.cpp(73): warning C4715: 'exercise_2': not all control paths return a value
+  exercises_page_53.vcxproj -> D:\Graphics\Projects\Book\exercises_page_53\x64\Debug\exercises_page_53.exe
