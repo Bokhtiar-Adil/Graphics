@@ -23,7 +23,15 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\Learn_opengl_github_repo\LearnOpenGL\resources\textures\container.jpg">
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="container.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="awesomeface.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
