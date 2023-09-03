@@ -11,6 +11,7 @@ using namespace std;
 int WIN_WIDTH = 800;
 int WIN_HEIGHT = 600;
 unsigned int sp;
+float mixer = 0.5;
 
 void frame_buffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
@@ -190,7 +191,7 @@ int exercise_4()
 	glUniform1i(glGetUniformLocation(sp, "texture2"), 1);
 
 	//float mixer = (float) 0.2;
-	glUniform1f(glGetUniformLocation(sp, "mixChanger"), 0.2f);
+	glUniform1f(glGetUniformLocation(sp, "mixChanger"), mixer);
 	
 
 
@@ -205,6 +206,7 @@ int exercise_4()
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		glUseProgram(sp);
+		glUniform1f(glGetUniformLocation(sp, "mixChanger"), mixer);
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, t1);
 		glActiveTexture(GL_TEXTURE1);
@@ -242,16 +244,13 @@ void processInput(GLFWwindow* window) {
 		glfwSetWindowShouldClose(window, true);
 	}
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
-		glUseProgram(sp);
-		glUniform1f(glGetUniformLocation(sp, "mixChanger"), 0.2f);
+		if (mixer<1) mixer += 0.1;
 	}
 	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
-		glUseProgram(sp);
-		glUniform1f(glGetUniformLocation(sp, "mixChanger"), 0.2f);
+		if (mixer > 0) mixer -= 0.1;
 	}
 	if (glfwGetKey(window, GLFW_KEY_G) == GLFW_PRESS) {
-		glUseProgram(sp);
-		glUniform1f(glGetUniformLocation(sp, "mixChanger"), 0.2f);
+		mixer = 0.5;
 	}
 
 }
