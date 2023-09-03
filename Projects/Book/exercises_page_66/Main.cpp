@@ -2,10 +2,15 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#define STB_IMAGE_IMPLEMENTATION
+#include <stb_image.h>
+
+
 using namespace std;
 
 int WIN_WIDTH = 800;
 int WIN_HEIGHT = 600;
+unsigned int sp;
 
 void frame_buffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
@@ -46,7 +51,7 @@ int exercise_4()
 		"out vec2 TexCoord;\n"
 		"void main()\n"
 		"{\n"
-		"gl_Position = aPos;\n"
+		"gl_Position = vec4(aPos, 1.0f);\n"
 		"Color = aCol;\n"
 		"TexCoord = aTexCoord;\n"
 		"}\0";
@@ -57,13 +62,13 @@ int exercise_4()
 		"in vec2 TexCoord;\n"
 		"uniform sampler2D texture1;\n"
 		"uniform sampler2D texture2;\n"
-		"uniform vec1 mixChanger;\n"
+		"uniform float mixChanger;\n"
 		"void main()\n"
 		"{\n"
 		"FragColor = mix(texture(texture1, TexCoord), texture(texture2, TexCoord), mixChanger);\n"
 		"}\0";
 
-	unsigned int vs, fs, sp;
+	unsigned int vs, fs;
 	int success;
 	char infolog[512];
 
@@ -120,10 +125,10 @@ int exercise_4()
 	glBindVertexArray(VAO);
 
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_DYNAMIC_DRAW);
 
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
@@ -141,17 +146,82 @@ int exercise_4()
 
 	// textures
 
+	unsigned int t1, t2;
+	int width, height, nrChannels;
+
+	glGenTextures(1, &t1);
+	glBindTexture(GL_TEXTURE_2D, t1);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	
+	stbi_set_flip_vertically_on_load(true);
+	unsigned char* data = stbi_load("container.jpg", &width, &height, &nrChannels, 0);
+	if (data) {
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+		glGenerateMipmap(GL_TEXTURE_2D);
+	}
+	else cout << "FAILED TO LOAD TEXTURE 1\n";
+
+	glBindTexture(GL_TEXTURE_2D, 0);
+	stbi_image_free(data);
+
+	glGenTextures(1, &t2);
+	glBindTexture(GL_TEXTURE_2D, t2);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	stbi_set_flip_vertically_on_load(true);
+	data = stbi_load("awesomeface.png", &width, &height, &nrChannels, 0);
+	if (data) {
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+		glGenerateMipmap(GL_TEXTURE_2D);
+	}
+	else cout << "FAILED TO LOAD TEXTURE 2\n";
+
+	glBindTexture(GL_TEXTURE_2D, 0);
+	stbi_image_free(data);
+
+	glUseProgram(sp);
+	glUniform1i(glGetUniformLocation(sp, "texture1"), 0);
+	glUniform1i(glGetUniformLocation(sp, "texture2"), 1);
+
+	//float mixer = (float) 0.2;
+	glUniform1f(glGetUniformLocation(sp, "mixChanger"), 0.2f);
+	
 
 
 
 	// render
 
 	while (!glfwWindowShouldClose(window)) {
+		
 		processInput(window);
+
+		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
+		glUseProgram(sp);
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, t1);
+		glActiveTexture(GL_TEXTURE1);
+		glBindTexture(GL_TEXTURE_2D, t2);
+
+		glBindVertexArray(VAO);
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
+
+	glDeleteVertexArrays(1, &VAO);
+	glDeleteBuffers(1, &VBO);
+	glDeleteBuffers(1, &EBO);
+	glDeleteProgram(sp);
 
 	glfwTerminate();
 	return 0;
@@ -171,4 +241,17 @@ void processInput(GLFWwindow* window) {
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
 		glfwSetWindowShouldClose(window, true);
 	}
+	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
+		glUseProgram(sp);
+		glUniform1f(glGetUniformLocation(sp, "mixChanger"), 0.2f);
+	}
+	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
+		glUseProgram(sp);
+		glUniform1f(glGetUniformLocation(sp, "mixChanger"), 0.2f);
+	}
+	if (glfwGetKey(window, GLFW_KEY_G) == GLFW_PRESS) {
+		glUseProgram(sp);
+		glUniform1f(glGetUniformLocation(sp, "mixChanger"), 0.2f);
+	}
+
 }
