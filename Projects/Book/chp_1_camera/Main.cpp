@@ -19,6 +19,11 @@ void processInput(GLFWwindow* window);
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
+glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 0.3f);
+glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f); // direction vector
+glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+float cameraSpeed = 1.0f;
+
 int main()
 {
     // glfw: initialize and configure
@@ -192,6 +197,20 @@ int main()
     ourShader.setInt("texture1", 0);
     ourShader.setInt("texture2", 1);
 
+   /* glm::vec3 camerapos = glm::vec3(0.0f, 0.0f, 0.3f);
+    glm::vec3 cameratarget = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::vec3 cameradirection = glm::normalize(camerapos - cameratarget);
+    glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
+    glm::vec3 cameraright = glm::vec3(glm::cross(up, cameradirection));
+    glm::vec3 cameraup = glm::vec3(glm::cross(cameradirection, cameraright));
+    glm::mat4 view = glm::lookat(camerapos, cameratarget, up);*/
+    
+    
+
+
+
+    const float radius = 10.0f;
+
 
     // render loop
     // -----------
@@ -216,12 +235,17 @@ int main()
         ourShader.use();
 
         // create transformations
-        glm::mat4 view = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+        //glm::mat4 view = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
         glm::mat4 projection = glm::mat4(1.0f);
         projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-        view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
+        //view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
         // pass transformation matrices to the shader
         ourShader.setMat4("projection", projection); // note: currently we set the projection matrix each frame, but since the projection matrix rarely changes it's often best practice to set it outside the main loop only once.
+        /*ourShader.setMat4("view", view);*/
+
+        float camx = sin(glfwGetTime()) * radius;
+        float camz = cos(glfwGetTime()) * radius;
+        glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
         ourShader.setMat4("view", view);
 
         // render boxes
@@ -237,6 +261,9 @@ int main()
 
             glDrawArrays(GL_TRIANGLES, 0, 36);
         }
+
+        
+
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------
@@ -261,6 +288,14 @@ void processInput(GLFWwindow* window)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
+    // camera moves forward -> camera moves to its neg z coord -> world moves to us -> world moves to its pos z coord -> camera's pos z coord
+    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) cameraPos += (cameraSpeed * cameraFront);
+    // camera moves backward -> camera moves to its pos z coord -> world moves from us -> world moves to its neg z coord -> camera's neg z coord
+    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) cameraPos -= (cameraSpeed * cameraFront);
+    // camera moves to right -> camers's pos x coord -> world moves left -> world's neg x coord -> hence minus the value
+    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp) * cameraSpeed);
+    // camera moves to left -> camers's neg x coord -> world moves right -> world's pos x coord -> hence plus the value
+    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp) * cameraSpeed);
 }
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes
