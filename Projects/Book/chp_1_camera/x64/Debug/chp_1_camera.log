@@ -1,4 +1,5 @@
 ﻿  Main.cpp
-D:\Graphics\Projects\Book\chp_1_camera\Main.cpp(246,20): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-D:\Graphics\Projects\Book\chp_1_camera\Main.cpp(247,20): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Graphics\Projects\Book\chp_1_camera\Main.cpp(248,20): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Graphics\Projects\Book\chp_1_camera\Main.cpp(249,20): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Graphics\Projects\Book\chp_1_camera\Main.cpp(291,24): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   chp_1_camera.vcxproj -> D:\Graphics\Projects\Book\chp_1_camera\x64\Debug\chp_1_camera.exe

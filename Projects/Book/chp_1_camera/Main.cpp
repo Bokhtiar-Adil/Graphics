@@ -23,6 +23,8 @@ glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 0.3f);
 glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f); // direction vector
 glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
 float cameraSpeed = 1.0f;
+float deltaTime = 0.0f;
+float lastFrame = 0.0f;
 
 int main()
 {
@@ -286,6 +288,10 @@ int main()
 // ---------------------------------------------------------------------------------------------------------
 void processInput(GLFWwindow* window)
 {
+    float currentFrame = glfwGetTime();
+    deltaTime = currentFrame - lastFrame;
+    lastFrame = currentFrame;
+    cameraSpeed = 2.5f * deltaTime;
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
     // camera moves forward -> camera moves to its neg z coord -> world moves to us -> world moves to its pos z coord -> camera's pos z coord
