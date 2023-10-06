@@ -145,6 +145,10 @@
     <ClInclude Include="camera.h" />
     <ClInclude Include="shader.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="container2.png" />
+    <Image Include="container2_specular.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
