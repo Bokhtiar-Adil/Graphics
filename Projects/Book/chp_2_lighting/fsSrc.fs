@@ -1,8 +1,15 @@
 #version 330 core
 
 
-struct Light {
+struct PointLight {
     vec3 position;
+    vec3 ambient;
+    vec3 diffuse;
+    vec3 specular;
+};
+
+struct DirectionalLight {
+    vec3 direction;
     vec3 ambient;
     vec3 diffuse;
     vec3 specular;
@@ -27,7 +34,9 @@ in vec3 Normal;
 in vec3 FragPos; 
 in vec2 TexCoords; 
 
-uniform Light light;
+//uniform PointLight light;
+uniform DirectionalLight light;
+
 uniform Material material;
 uniform Materialtex materialtex;
 uniform vec3 objectColor;
@@ -37,6 +46,7 @@ uniform vec3 viewPos;
 
 void main()
 {
+    vec3 lightDirDir = normalize(-light.direction);
     // ambient
     vec3 ambient = light.ambient * material.ambient; // I_amb = K_amb * I_src
     vec3 ambienttex = light.ambient * texture(materialtex.diffuse, TexCoords).rgb;
@@ -44,14 +54,14 @@ void main()
     // diffuse
     vec3 norm = normalize(Normal);
     vec3 lightDir = normalize(lightPos - FragPos);
-    float diff = max(dot(norm, lightDir), 0.0f); // only positive values of normalized (normal * light_direction)
+    float diff = max(dot(norm, lightDirDir), 0.0f); // only positive values of normalized (normal * light_direction)
     vec3 diffuse = light.diffuse * (diff * material.diffuse); // I_diff = K_diff * (normal * light_direction) * I_src    
     vec3 diffusetex = light.diffuse * diff * texture(materialtex.diffuse, TexCoords).rgb; // I_diff = K_diff * (normal * light_direction) * I_src    
 
     // specular
     float specularStr = 0.5f;
     vec3 viewDir = normalize(viewPos - FragPos);
-    vec3 reflectDir = reflect(-lightDir, norm); // negate it as lightDir is obj to src -> need src to obj
+    vec3 reflectDir = reflect(-lightDirDir, norm); // negate it as lightDir is obj to src -> need src to obj
     float spec = pow(max(dot(reflectDir, viewDir), 0.0f), material.shininess);
     vec3 specular = light.specular * (spec * material.specular); // I_spec = k_spec * (reflection_direction * normal)^shininess * I_src
     float spectex = pow(max(dot(reflectDir, viewDir), 0.0f), materialtex.shininess);
