@@ -137,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="fsSrc.fs" />
+    <None Include="fsSrcLightsPhong.fs" />
     <None Include="light_cube.fs" />
     <None Include="light_cube.vs" />
     <None Include="vsSrc.vs" />

@@ -27,6 +27,7 @@
     <None Include="light_cube.fs" />
     <None Include="vsSrc.vs" />
     <None Include="fsSrc.fs" />
+    <None Include="fsSrcLightsPhong.fs" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h">
