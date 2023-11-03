@@ -1,0 +1,52 @@
+﻿  main.cpp
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(358,47): warning C4305: '-=': truncation from 'double' to 'float'
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(359,52): warning C4305: '-=': truncation from 'double' to 'float'
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(360,34): warning C4305: '-=': truncation from 'double' to 'float'
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(362,75): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(363,75): warning C4305: '-=': truncation from 'double' to 'float'
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(364,75): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(365,75): warning C4305: '-=': truncation from 'double' to 'float'
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(366,75): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(367,75): warning C4305: '-=': truncation from 'double' to 'float'
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(368,71): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(369,71): warning C4305: '-=': truncation from 'double' to 'float'
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(370,71): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(371,71): warning C4305: '-=': truncation from 'double' to 'float'
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(372,71): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(373,71): warning C4305: '-=': truncation from 'double' to 'float'
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(377,29): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(384,29): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(391,29): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(530,15): warning C4244: 'initializing': conversion from 'GLint' to 'float', possible loss of data
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(530,34): warning C4244: 'initializing': conversion from 'GLint' to 'float', possible loss of data
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(530,53): warning C4244: 'initializing': conversion from 'GLint' to 'float', possible loss of data
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(530,72): warning C4244: 'initializing': conversion from 'GLint' to 'float', possible loss of data
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(556,26): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(557,26): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(559,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(559,26): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(566,26): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(567,26): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(570,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(570,26): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(665,33): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(668,14): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(678,25): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(684,19): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\main.cpp(685,19): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+glfw3.lib(init.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(init.obj)' or at ''; linking object as if no debug info
+glfw3.lib(window.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(window.obj)' or at ''; linking object as if no debug info
+glfw3.lib(input.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(input.obj)' or at ''; linking object as if no debug info
+glfw3.lib(context.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(context.obj)' or at ''; linking object as if no debug info
+glfw3.lib(win32_init.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_init.obj)' or at ''; linking object as if no debug info
+glfw3.lib(win32_monitor.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_monitor.obj)' or at ''; linking object as if no debug info
+glfw3.lib(win32_time.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_time.obj)' or at ''; linking object as if no debug info
+glfw3.lib(win32_thread.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_thread.obj)' or at ''; linking object as if no debug info
+glfw3.lib(monitor.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(monitor.obj)' or at ''; linking object as if no debug info
+glfw3.lib(vulkan.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(vulkan.obj)' or at ''; linking object as if no debug info
+glfw3.lib(win32_window.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_window.obj)' or at ''; linking object as if no debug info
+glfw3.lib(win32_joystick.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_joystick.obj)' or at ''; linking object as if no debug info
+glfw3.lib(wgl_context.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(wgl_context.obj)' or at ''; linking object as if no debug info
+glfw3.lib(egl_context.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(egl_context.obj)' or at ''; linking object as if no debug info
+glfw3.lib(osmesa_context.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(osmesa_context.obj)' or at ''; linking object as if no debug info
+  Curve.vcxproj -> C:\Users\softl\OneDrive\Desktop\Lab 5\Curve\x64\Debug\Curve.exe
